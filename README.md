@@ -63,11 +63,18 @@ php artisan serve
 #### 👤 Job Seekers
 | Method | Endpoint              | Description             |
 | ------ | --------------------- | ----------------------- |
-| GET    | /api/job-seekers      | Get all job seekers     |
-| GET    | /api/job-seekers/{id} | Get specific job seeker |
-| POST   | /api/job-seekers      | Create job seeker       |
-| PUT    | /api/job-seekers/{id} | Update job seeker       |
-| DELETE | /api/job-seekers/{id} | Delete job seeker       |
+| GET    | `/api/job-seekers`      | Get all job seekers     |
+| GET    | `/api/job-seekers/{id}` | Get specific job seeker |
+| POST   | `/api/job-seekers`      | Create job seeker       |
+| PUT    | `/api/job-seekers/{id}` | Update job seeker       |
+| DELETE | `/api/job-seekers/{id}` | Delete job seeker       |
+
+#### 👤 User Info
+| Method | Endpoint                           | Description                                                            |            |
+| ------ | ---------------------------------- | ---------------------------------------------------------------------- | ---------- |
+| GET    | `/api/users`                       | Get all job seekers with their accounts                                |            |
+| GET    | `/api/users/{id}/full-info`        | Get full info (including account) of a job seeker                      |            |
+| GET    | `/api/users/{id}/basic-info?type=` | Get basic info (name & avatar) of job seeker or company (\`type=client | company\`) |
 
 #### 🏢 Companies
 
