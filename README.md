@@ -81,3 +81,8 @@ php artisan serve
 #### 📄 Jobs
 
 #### 📥 Applications
+| Method | Endpoint           | Description           |
+|--------|--------------------|-----------------------|
+| POST   | `/api/applications`  | Apply to a job        |
+| POST   | `/api/invites`       | Company invites user  |
+
