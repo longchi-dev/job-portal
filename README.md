@@ -51,7 +51,7 @@ DB_PASSWORD=your_password
 php artisan migrate
 
 # Seed with sample data
-php artisan db:seed
+php artisan db:seed --class=JobPortalSeeder
 ```
 
 ### 🚀 Run the Server
