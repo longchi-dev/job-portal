@@ -60,6 +60,12 @@ php artisan serve
 ```
 
 ### 📚 API Endpoints
+#### 👤 Auth (Login/Register)
+| Method | Endpoint            | Description         |
+|--------|---------------------|---------------------|
+| POST   | `/api/auth/login`   | Login               |
+| POST   | `/api/auth/register`| Register            |
+
 #### 👤 Job Seekers
 | Method | Endpoint              | Description             |
 | ------ | --------------------- | ----------------------- |
@@ -77,12 +83,36 @@ php artisan serve
 | GET    | `/api/users/{id}/basic-info?type=` | Get basic info (name & avatar) of job seeker or company (\`type=client | company\`) |
 
 #### 🏢 Companies
+| Method | Endpoint              | Description            |
+|--------|-----------------------|------------------------|
+| GET    | `/api/companies`      | Get all companies      |
+| GET    | `/api/companies/{id}` | Get company with account|
 
-#### 📄 Jobs
+#### 📄 Job Posts
+| Method | Endpoint              | Description                 |
+|--------|-----------------------|-----------------------------|
+| GET    | `/api/job-posts`      | Get all job posts           |
+| GET    | `/api/job-posts/{id}` | Get job post by ID          |
+| POST   | `/api/job-posts`      | Create job post (company)   |
+| PUT    | `/api/job-posts/{id}` | Update job post             |
+| DELETE | `/api/job-posts/{id}` | Delete job post             |
 
-#### 📥 Applications
-| Method | Endpoint           | Description           |
-|--------|--------------------|-----------------------|
-| POST   | `/api/applications`  | Apply to a job        |
-| POST   | `/api/invites`       | Company invites user  |
+#### 📥 Job Applications
+| Method | Endpoint                     | Description                     |
+| ------ | ---------------------------- | ------------------------------- |
+| POST   | `/api/applications`          | Apply to a job                  |
+| GET    | `/api/applications/{job_id}` | Get all applicants for a job    |
+| POST   | `/api/applications/accept`   | Company approves an application |
+| POST   | `/api/applications/reject`   | Company rejects an application  |
+
+
+#### 📬 Job Invitations
+| Method | Endpoint                           | Description                         |
+| ------ | ---------------------------------- | ----------------------------------- |
+| POST   | `/api/invitations`                 | Company invites a job seeker        |
+| GET    | `/api/invitations/{job_seeker_id}` | Get all invitations of a job seeker |
+| POST   | `/api/invitations/accept`          | Job seeker accepts invitation       |
+| POST   | `/api/invitations/reject`          | Job seeker rejects invitation       |
+
+
 
