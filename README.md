@@ -71,7 +71,7 @@ php artisan serve
 | ------ | --------------------- | ----------------------- |
 | GET    | `/api/job-seekers`      | Get all job seekers     |
 | GET    | `/api/job-seekers/{id}` | Get specific job seeker |
-| POST   | `/api/job-seekers`      | Create job seeker       |
+| POST   | `/api/job-seekers`      | (Internal) Create job seeker       |
 | PUT    | `/api/job-seekers/{id}` | Update job seeker       |
 | DELETE | `/api/job-seekers/{id}` | Delete job seeker       |
 
