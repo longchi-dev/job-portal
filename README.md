@@ -76,11 +76,12 @@ php artisan serve
 | DELETE | `/api/job-seekers/{id}` | Delete job seeker       |
 
 #### 👤 User Info
-| Method | Endpoint                           | Description                                                            |         
-| ------ | ---------------------------------- | ---------------------------------------------------------------------- | 
-| GET    | `/api/users`                       | Get all job seekers with their accounts                                |           
-| GET    | `/api/users/{id}/full-info`        | Get full info (including account) of a job seeker                      |        
-| GET    | `/api/users/{id}/basic-info?type=` | Get basic info (name & avatar) of job seeker or company (\`type=client company\`)| 
+| Method | Endpoint                           | Description                                                              |
+| ------ | ---------------------------------- | ------------------------------------------------------------------------ |
+| GET    | `/api/users`                       | Get all job seekers with their account information                       |
+| GET    | `/api/users/{id}/full-info`        | Get full information (including account) of a specific job seeker        |
+| GET    | `/api/users/{id}/basic-info?type=` | Get basic info (name & avatar) of a user. Use `type=client` or `company` |
+
 
 #### 🏢 Companies
 | Method | Endpoint              | Description            |
