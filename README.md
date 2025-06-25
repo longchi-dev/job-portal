@@ -64,14 +64,14 @@ php artisan serve
 | Method | Endpoint            | Description         |
 |--------|---------------------|---------------------|
 | POST   | `/api/auth/login`   | Login               |
-| POST   | `/api/auth/register`| Register            |
+| POST   | `/api/auth/register`| Register (job seeker/company) |
 
 #### 👤 Job Seekers
 | Method | Endpoint              | Description             |
 | ------ | --------------------- | ----------------------- |
 | GET    | `/api/job-seekers`      | Get all job seekers     |
 | GET    | `/api/job-seekers/{id}` | Get specific job seeker |
-| POST   | `/api/job-seekers`      | (Internal) Create job seeker       |
+| POST   | `/api/job-seekers`      | Create job seeker (internal use)       |
 | PUT    | `/api/job-seekers/{id}` | Update job seeker       |
 | DELETE | `/api/job-seekers/{id}` | Delete job seeker       |
 
@@ -87,21 +87,21 @@ php artisan serve
 | Method | Endpoint              | Description            |
 |--------|-----------------------|------------------------|
 | GET    | `/api/companies`      | Get all companies      |
-| GET    | `/api/companies/{id}` | Get company with account|
+| GET    | `/api/companies/{id}` | Get company and associated account by ID |
 
 #### 📄 Job Posts
 | Method | Endpoint              | Description                 |
 |--------|-----------------------|-----------------------------|
 | GET    | `/api/job-posts`      | Get all job posts           |
 | GET    | `/api/job-posts/{id}` | Get job post by ID          |
-| POST   | `/api/job-posts`      | Create job post (company)   |
+| POST   | `/api/job-posts`      | Create a job post (by company)   |
 | PUT    | `/api/job-posts/{id}` | Update job post             |
 | DELETE | `/api/job-posts/{id}` | Delete job post             |
 
 #### 📥 Job Applications
 | Method | Endpoint                     | Description                     |
 | ------ | ---------------------------- | ------------------------------- |
-| POST   | `/api/applications`          | Apply to a job                  |
+| POST   | `/api/applications`          | Job seeker applies to a job     |
 | GET    | `/api/applications/{job_id}` | Get all applicants for a job    |
 | POST   | `/api/applications/accept`   | Company approves an application |
 | POST   | `/api/applications/reject`   | Company rejects an application  |
@@ -112,8 +112,8 @@ php artisan serve
 | ------ | ---------------------------------- | ----------------------------------- |
 | POST   | `/api/invitations`                 | Company invites a job seeker        |
 | GET    | `/api/invitations/{job_seeker_id}` | Get all invitations of a job seeker |
-| POST   | `/api/invitations/accept`          | Job seeker accepts invitation       |
-| POST   | `/api/invitations/reject`          | Job seeker rejects invitation       |
+| POST   | `/api/invitations/accept`          | Job seeker accepts an invitation       |
+| POST   | `/api/invitations/reject`          | Job seeker rejects an invitation       |
 
 
 
