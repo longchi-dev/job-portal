@@ -17,7 +17,7 @@ This is a Job Portal application built with Laravel (v12.19.2+), providing core 
 - Composer
 - MySQL
 - Laravel >= 11 (new bootstrap/app.php structure)
-
+--- 
 ### ⚙️ Installation
 ```bash
 # Clone the respository
@@ -33,7 +33,7 @@ cp .env.example .env
 # Generate application key
 php artisan key:generate
 ```
-
+--- 
 ### 🛠 Configure Environment
 Open .env and update your database configuration
 ```env
@@ -44,7 +44,7 @@ DB_DATABASE=job_portal
 DB_USERNAME=root
 DB_PASSWORD=your_password
 ```
-
+--- 
 ### 🧱 Run Migrations and Seeders
 ```bash
 # Create database tables
@@ -53,12 +53,12 @@ php artisan migrate
 # Seed with sample data
 php artisan db:seed --class=JobPortalSeeder
 ```
-
+--- 
 ### 🚀 Run the Server
 ```bash
 php artisan serve
 ```
-
+--- 
 ### 📚 API Endpoints
 #### 👤 Auth (Login/Register)
 | Method | Endpoint            | Description         |
@@ -118,6 +118,7 @@ php artisan serve
 | POST   | `/api/invitations/accept`          | Job seeker accepts an invitation       |
 | POST   | `/api/invitations/reject`          | Job seeker rejects an invitation       |
 
+--- 
 ### 📦 Postman Collection
 The Postman file is already exported at: `JobPortal_API.postman_collection.json`
 Import into Postman to quickly test endpoints.
