@@ -104,8 +104,8 @@ php artisan serve
 #### 📥 Job Applications
 | Method | Endpoint                     | Description                     |
 | ------ | ---------------------------- | ------------------------------- |
-| POST   | `/api/applications`          | Job seeker applies to a job     |
 | GET    | `/api/applications/{job_id}` | Get all applicants for a job    |
+| POST   | `/api/applications`          | Job seeker applies to a job     |
 | POST   | `/api/applications/accept`   | Company approves an application |
 | POST   | `/api/applications/reject`   | Company rejects an application  |
 
