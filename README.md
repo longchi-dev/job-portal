@@ -118,5 +118,8 @@ php artisan serve
 | POST   | `/api/invitations/accept`          | Job seeker accepts an invitation       |
 | POST   | `/api/invitations/reject`          | Job seeker rejects an invitation       |
 
+### 📦 Postman Collection
+The Postman file is already exported at: `JobPortal_API.postman_collection.json`
+Import into Postman to quickly test endpoints.
 
 
