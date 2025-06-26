@@ -1,0 +1,868 @@
+{
+	"info": {
+		"_postman_id": "ab33111d-bb83-4bed-93f3-fc62cd2f8800",
+		"name": "Job Portal API",
+		"description": "### 📝 **Overview: Job Portal API**\n\nWelcome to the **Job Portal API**, a RESTful API built with Laravel for managing job seekers, companies, job postings, applications, and invitations.\n\nThis API is designed for a job recruitment platform that connects **job seekers** and **companies**, providing features such as:\n\n- User authentication (Login/Register)\n    \n- Managing job seeker and company profiles\n    \n- Creating and browsing job posts\n    \n- Applying to job posts\n    \n- Sending and responding to job invitationsEndFragment\n    \n\n---\n\n### 📚 **Main Features**\n\n#### 👤 Authentication\n\n- Register and login with role: `job_seeker` or `company`\n    \n\n#### 🧑‍💼 Job Seekers\n\n- CRUD for job seeker profiles\n    \n- Get user basic and full info\n    \n\n#### 🏢 Companies\n\n- CRUD for company information\n    \n- View associated account\n    \n\n#### 📄 Job Posts\n\n- Companies can create, update, delete job posts\n    \n- Job seekers can view and apply\n    \n\n#### 📥 Applications\n\n- Job seekers apply to job posts\n    \n- Companies can accept/reject applications\n    \n\n#### 📬 Invitations\n\n- Companies invite job seekers\n    \n- Job seekers can accept/reject\n    \n\n---\n\n### 📂 Collection Structure\n\n- `Auth`: Login and Register\n    \n- `Users`: Job seeker and account info\n    \n- `Companies`: Company details and account\n    \n- `Job Posts`: Job listing management\n    \n- `Applications`: Apply, review, accept/reject\n    \n- `Invitations`: Invite, accept/reject invites\n    \n\n---\n\n### 🔧 Usage\n\n- Base URL: `{{hostname}}/api`\n    \n- Replace `{{hostname}}` with your local or deployed backend domain\n    \n- Most endpoints use `application/json` as body type",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28877021",
+		"_collection_link": "https://platform-api-2798.postman.co/workspace/4a195074-037d-409e-998a-c0a26ccfa83a/collection/28877021-ab33111d-bb83-4bed-93f3-fc62cd2f8800?action=share&source=collection_link&creator=28877021"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"chilongne\",\r\n    \"password\": \"chilong123\",\r\n    \"user_type\": \"job_seeker\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/auth/login",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"chilongne\",\r\n  \"password\": \"chilong123\",\r\n  \"email\": \"chilongne@gmail.com\",\r\n  \"phone\": \"0912345678\",\r\n  \"user_type\": \"job_seeker\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/auth/register",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Seekers",
+			"item": [
+				{
+					"name": "Get all job seekers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/job-seekers",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-seekers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific job seeker",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/job-seekers/2",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-seekers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create job seeker (internal use only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"full_name\": \"Nguyễn Văn B\",\r\n  \"avatar_url\": \"nguyenvana.jpg\",\r\n  \"desired_job\": \"Backend Developer\",\r\n  \"birth_date\": \"1999-05-10\",\r\n  \"gender\": 1,\r\n  \"job_type\": 1,\r\n  \"industry\": \"Software\",\r\n  \"city\": \"Hà Nội\",\r\n  \"address\": \"Số 10 Nguyễn Trãi\",\r\n  \"career_goal\": \"Trở thành kỹ sư phần mềm giỏi\",\r\n  \"education\": \"Đại học Bách Khoa\",\r\n  \"skills\": \"Laravel, PHP, MySQL\",\r\n  \"experience\": \"2 năm lập trình backend\",\r\n  \"profile_summary\": \"Đam mê học hỏi, chịu được áp lực\",\r\n  \"skill_tags\": \"Laravel,PHP,MySQL\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/job-seekers",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-seekers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update job seeker",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"full_name\": \"Nguyễn Văn A\",\r\n  \"avatar_url\": \"nguyenvana.jpg\",\r\n  \"desired_job\": \"Backend Developer\",\r\n  \"birth_date\": \"1999-05-10\",\r\n  \"gender\": 1,\r\n  \"job_type\": 1,\r\n  \"industry\": \"Software\",\r\n  \"city\": \"Hà Nội\",\r\n  \"address\": \"Số 10 Nguyễn Trãi\",\r\n  \"career_goal\": \"Trở thành kỹ sư phần mềm giỏi\",\r\n  \"education\": \"Đại học Bách Khoa\",\r\n  \"skills\": \"Laravel, PHP, MySQL\",\r\n  \"experience\": \"2 năm lập trình backend\",\r\n  \"profile_summary\": \"Đam mê học hỏi, chịu được áp lực\",\r\n  \"skill_tags\": \"Laravel,PHP,MySQL\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/job-seekers/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-seekers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete job seeker",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/job-seekers/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-seekers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Info",
+			"item": [
+				{
+					"name": "Get all job seekers with their account information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/users",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get full information (including account) of a specific job seeker",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/users/2/full-info",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2",
+								"full-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get basic info (name & avatar) of a user. Use type=client or company",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/users/2/basic-info?type=company",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2",
+								"basic-info"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "company"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "Get all companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/companies",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get company and associated account by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/companies/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create job seeker (internal use only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"FPT Software\",\r\n  \"address\": \"Khu Công Nghệ Cao, Quận 9, TP.HCM\",\r\n  \"website\": \"https://fptsoftware.com\",\r\n  \"description\": \"FPT là công ty công nghệ hàng đầu Việt Nam.\",\r\n  \"avatar_url\": \"https://example.com/images/fpt-avatar.png\",\r\n  \"industry\": \"Information Technology\",\r\n  \"city\": \"Ho Chi Minh City\",\r\n  \"benefits\": \"Môi trường làm việc chuyên nghiệp, bảo hiểm đầy đủ, thưởng cuối năm\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/job-seekers",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-seekers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"FPT Software Updated\",\r\n  \"address\": \"Tòa nhà Innovation, Quận 7, TP.HCM\",\r\n  \"website\": \"https://fptsoftware.com.vn\",\r\n  \"description\": \"Công ty công nghệ hàng đầu với nhiều chi nhánh toàn quốc.\",\r\n  \"avatar_url\": \"https://example.com/images/fpt-new.png\",\r\n  \"industry\": \"Software Outsourcing\",\r\n  \"city\": \"Ho Chi Minh City\",\r\n  \"benefits\": \"Chế độ bảo hiểm, bonus, training quốc tế\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/companies/3",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"companies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete company",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/companies/3",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"companies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Posts",
+			"item": [
+				{
+					"name": "Get all job posts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/job-posts",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get job post by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/job-posts/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a job post (by company)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_id\": 2,\r\n  \"title\": \"Junior Laravel Developer\",\r\n  \"industry\": \"Software\",\r\n  \"position\": \"Backend Developer\",\r\n  \"salary\": 15000000,\r\n  \"job_type\": \"Full-time\",\r\n  \"address\": \"Tòa nhà ABC, Quận 1, TP.HCM\",\r\n  \"phone\": \"0909123456\",\r\n  \"email\": \"hr@company.com\",\r\n  \"description\": \"Tham gia phát triển và bảo trì hệ thống Laravel nội bộ.\",\r\n  \"skill_tags\": \"Laravel,PHP,MySQL\",\r\n  \"deadline\": \"2025-07-31\",\r\n  \"requirements\": \"Có ít nhất 1 năm kinh nghiệm với Laravel.\",\r\n  \"degree_required\": \"Bachelor's in Computer Science\",\r\n  \"benefits\": \"Thưởng lễ Tết, bảo hiểm đầy đủ, đào tạo nâng cao.\",\r\n  \"quantity\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/job-posts",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update job post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_id\": 3,\r\n  \"title\": \"Lập trình FullStack\",\r\n  \"industry\": \"Công Nghệ Thông Tin\",\r\n  \"position\": \"Lập trình viên\",\r\n  \"salary\": 10000000,\r\n  \"job_type\": 1,\r\n  \"address\": \"Tôn Đức Thắng\",\r\n  \"phone\": \"0562854976\",\r\n  \"email\": \"congty@gmail.com\",\r\n  \"description\": \"Công việc lập trình ứng dụng web và mobile sử dụng PHP và JavaScript.\",\r\n  \"skill_tags\": \"php,html,js,java\",\r\n  \"deadline\": \"2025-06-06\",\r\n  \"requirements\": \"Ít nhất 1 năm kinh nghiệm lập trình web, biết sử dụng Laravel là lợi thế.\",\r\n  \"degree_required\": \"Cử nhân CNTT hoặc ngành liên quan.\",\r\n  \"benefits\": \"Lương tháng 13, bảo hiểm đầy đủ, hỗ trợ đào tạo chuyên môn.\",\r\n  \"quantity\": 2\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/job-posts/3",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-posts",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete job post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/job-posts/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"job-posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Applications",
+			"item": [
+				{
+					"name": "Get all applicants for a job",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/applications/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"applications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job seeker applies to a job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"job_seeker_id\": 2,\r\n  \"job_post_id\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/applications",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company approves an application",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"job_seeker_id\": 2,\r\n  \"job_post_id\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/applications/accept",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"applications",
+								"accept"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company rejects an application",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"job_seeker_id\": 2,\r\n  \"job_post_id\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/applications/reject",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"applications",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Invitations",
+			"item": [
+				{
+					"name": "Get all invitations of a job seeker",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{hostname}}/api/invitations/1",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"invitations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company invites a job seeker",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"company_id\": 3,\r\n  \"job_seeker_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/invitations",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"invitations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job seeker accepts an invitation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"job_seeker_id\": 2,\r\n  \"company_id\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/invitations/accept",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"invitations",
+								"accept"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job seeker rejects an invitation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"job_seeker_id\": 2,\r\n  \"company_id\": 3\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/invitations/reject",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"invitations",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
