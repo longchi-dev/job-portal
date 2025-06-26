@@ -71,7 +71,7 @@ php artisan serve
 | ------ | --------------------- | ----------------------- |
 | GET    | `/api/job-seekers`      | Get all job seekers     |
 | GET    | `/api/job-seekers/{id}` | Get specific job seeker |
-| POST   | `/api/job-seekers`      | Create job seeker (internal use)       |
+| POST   | `/api/job-seekers`      | Create job seeker (internal use only)       |
 | PUT    | `/api/job-seekers/{id}` | Update job seeker       |
 | DELETE | `/api/job-seekers/{id}` | Delete job seeker       |
 
@@ -88,6 +88,9 @@ php artisan serve
 |--------|-----------------------|------------------------|
 | GET    | `/api/companies`      | Get all companies      |
 | GET    | `/api/companies/{id}` | Get company and associated account by ID |
+| POST   | `/api/companies`        | Create company (internal use only) |
+| PUT    | `/api/companies/{id}`    | Update company                     |
+| DELETE | `/api/companies/{id}`    | Delete company                     |
 
 #### 📄 Job Posts
 | Method | Endpoint              | Description                 |
