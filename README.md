@@ -113,8 +113,8 @@ php artisan serve
 #### 📬 Job Invitations
 | Method | Endpoint                           | Description                         |
 | ------ | ---------------------------------- | ----------------------------------- |
-| POST   | `/api/invitations`                 | Company invites a job seeker        |
 | GET    | `/api/invitations/{job_seeker_id}` | Get all invitations of a job seeker |
+| POST   | `/api/invitations`                 | Company invites a job seeker        |
 | POST   | `/api/invitations/accept`          | Job seeker accepts an invitation       |
 | POST   | `/api/invitations/reject`          | Job seeker rejects an invitation       |
 
